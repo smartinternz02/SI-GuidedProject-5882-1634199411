@@ -33,4 +33,3 @@ if(pred == 0):
 else: 
     print("Maintenance Required!! Expected a failure within 30 days.")
 
-#['Theoretical_Power_Curve (KWh)', 'WindSpeed(m/s)']
