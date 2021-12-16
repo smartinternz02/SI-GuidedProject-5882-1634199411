@@ -23,14 +23,17 @@ def predict1():
    
     input_features=[float(x) for x in request.form.values()]
     features_value=[np.array(input_features)]
-    payload_scoring = {"input_data": [{"field": [["Global_reactive_power","Global_intensity","Sub_metering_1","Sub_metering_2","Sub_metering_3"]], "values": [(input_features)]}]}
+    payload_scoring = {"input_data": 
+			[{"field": [['id','cycle','setting1', 'setting2', 'setting3', 's1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11',
+                   's12', 's13', 's14', 's15', 's16', 's17', 's18', 's19', 's20', 's21','ttf']], "values": [(input_features)]}]}
     response_scoring = requests.post('https://us-south.ml.cloud.ibm.com/ml/v4/deployments/7488912b-b6aa-4b62-a92b-8273bfcc6da6/predictions?version=2021-12-03', json=payload_scoring, headers={'Authorization': 'Bearer ' + mltoken})
     print("Scoring response")
     pred= response_scoring.json()
     print(pred)
     output=pred['predictions'][0] ['values'][0][0]
     print(output)
-    '''features_name=['Global_reactive_power','Global_intensity','Sub_metering_1','Sub_metering_2','Sub_metering_3']
+    '''features_name=[''id','cycle','setting1', 'setting2', 'setting3', 's1', 's2', 's3', 's4', 's5', 's6', 's7', 's8', 's9', 's10', 's11',
+                   's12', 's13', 's14', 's15', 's16', 's17', 's18', 's19', 's20', 's21','ttf']
     df=pd.DataFrame(features_value,columns=features_name)
     output=model.predict(df)
     print(output)'''
